@@ -1,17 +1,17 @@
-def dfs(adj, node, visited, res):
-    if node in visited:
-        return
-    visited.add(node)
-    res.append(node)
-
-    for n in adj[node]:
-        if n not in visited:
-            dfs(adj, n, visited, res)
-
-
 def dfsOfGraph(adj):
     res = []
     visited = set()
+
+    def dfs(adj, node, visited, res):
+        if node in visited:
+            return
+        visited.add(node)
+        res.append(node)
+
+        for n in adj[node]:
+            if n not in visited:
+                dfs(adj, n, visited, res)
+
     dfs(adj, 0, visited, res)
     return res
 

@@ -1,0 +1,24 @@
+if not node , return None
+create a map - key as original graph node , value as corresponding clone node
+
+write dfs function which takes original graph node as parameter:
+    first check if there is corresponding clone against this original graph node?
+    
+    if there is, simply return that clone from map
+
+    if there is no clone, then simply create a clone node with the value same as original graph node
+    also add this in map
+
+    now recursively build the neighbors of the clone node, for that:
+    iterate over the neighbors of original graph node
+      and simply do this, clone.neighbors.append(dfs(neighbor))
+
+    return clone
+
+
+call dfs(given graph node) 
+          
+    
+        
+        
+

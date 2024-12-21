@@ -7,22 +7,24 @@ class Node:
 """
 
 from typing import Optional
+
+
 class Solution:
-    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
+    def cloneGraph(self, node: Optional["Node"]) -> Optional["Node"]:
         if not node:
             return None
-        mp = {}
+        mp = {}  # key = original_node, value = clone
 
         def dfs(original_node):
             if original_node in mp:
-                return mp[original_node] # return corresponding clone
+                return mp[original_node]  # return corresponding clone
             clone = Node(original_node.val)
             mp[original_node] = clone
 
-            for n in original_node.neighbors:
-                clone.neighbors.append(dfs(n)) # a clone's neighbor must be a clone
+            for neighbor in original_node.neighbors:
+                clone.neighbors.append(
+                    dfs(neighbor)
+                )  # a clone's neighbor must also be a clone
             return clone
 
         return dfs(node)
-
-
